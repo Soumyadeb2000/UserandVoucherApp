@@ -93,7 +93,7 @@ describe("POST /vouchers", () => {
         .send({
           "updateData": {
             "title": "Netflix",
-            "description": "newOffer",
+            "description": "newOffer"
           }
         });
       expect(res.statusCode).toBe(200);
