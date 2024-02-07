@@ -7,7 +7,7 @@ const Voucher = require('../Models/Vouchers');
 exports.buyVoucher = async (req, res) => {
     try {
         const { code, userId } = req.body;
-        const voucher = await Voucher.findOne({ where: { code: code }, attributes: ['id']});
+        const voucher = await Voucher.findOne({ where: { code: code }});
         if (!voucher) {
             req.status(404).json({ failed: 'Invalid Voucher Code' });
         } else {

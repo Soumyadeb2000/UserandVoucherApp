@@ -29,6 +29,10 @@ const Voucher = sequelize.define('Voucher', {
         type: Sequelize.STRING,
         required: true,
         unique: true
+    },
+    isValid: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
     }
 });
 

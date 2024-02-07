@@ -1,5 +1,7 @@
 const User = require('../Models/Users');
 
+const UserVoucher = require('../Models/UserVoucher');
+
 const sequelize = require('../Utils/db');
 
 exports.createUser = async (req, res) => {
@@ -71,6 +73,7 @@ exports.deleteUser = async (req, res) => {
         const user = await User.findByPk(id);
         if (user) {
             await User.destroy({ where: { id: id } });
+            await UserVoucher.destroy({where: {userId: id}})
             await t.commit();
             res.status(200).json({success: "Deleted"});
         } else {

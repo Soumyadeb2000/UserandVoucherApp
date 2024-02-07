@@ -108,7 +108,8 @@ exports.deleteVoucher = async (req, res) => {
         const id = req.params.id;
         const voucher = await Voucher.findByPk(id);
         if (voucher) {
-            await Voucher.destroy({ where: { id: id } });
+            voucher.isValid = false;
+            voucher.save()
             await t.commit();
             res.status(200).json({ success: "Deleted" });
         } else {
